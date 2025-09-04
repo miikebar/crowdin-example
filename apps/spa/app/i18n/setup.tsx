@@ -1,3 +1,4 @@
+import { LOCALE_CONFIG as AUTH_LOCALE_CONFIG } from "@crowdin-example/auth";
 import {
   CrowdinI18nextBackend,
   I18NProvider,
@@ -21,10 +22,7 @@ if (typeof window !== "undefined") {
           namespace: "translation",
           distributionHash: "ca58442a2f7d9ec0ddeddc9u26r",
         },
-        {
-          namespace: "auth",
-          distributionHash: "9d19c25154006c4aeebe639u26r",
-        },
+        AUTH_LOCALE_CONFIG,
       ])
     )
     .init({
