@@ -11,3 +11,5 @@ files: [
     "translation": "/assets/locales/%locale%.json"
   }
 ]
+
+"custom_distribution_hash": "354154a538d300395092019u26r"

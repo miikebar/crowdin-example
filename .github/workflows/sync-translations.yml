@@ -47,6 +47,13 @@ jobs:
           command: 'pre-translate'
           command_args: '--method tm --auto-approve-option all --no-duplicate-translations --translate-untranslated-only --config ${{ matrix.dir }}/crowdin.yml'
 
+      - name: Read distribution hash
+        id: read_hash
+        run: |
+          DIST_HASH=$(yq eval '.custom_distribution_hash' "${{ matrix.dir }}/crowdin.yml")
+          echo "distribution_hash=$DIST_HASH" >> $GITHUB_OUTPUT
+
+          
       - name: Update OTA distribution
         uses: crowdin/github-action@v2
         with:
