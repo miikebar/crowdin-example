@@ -58,4 +58,4 @@ jobs:
         uses: crowdin/github-action@v2
         with:
           command: 'distribution'
-          command_args: 'release ca58442a2f7d9ec0ddeddc9u26r --config ${{ matrix.dir }}/crowdin.yml'
+          command_args: 'release ${{ steps.read_hash.outputs.distribution_hash }} --config ${{ matrix.dir }}/crowdin.yml'
