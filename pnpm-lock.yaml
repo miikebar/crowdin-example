@@ -138,6 +138,12 @@ importers:
       '@crowdin-example/auth':
         specifier: workspace:*
         version: link:../../packages/auth
+      '@crowdin-example/i18n':
+        specifier: workspace:*
+        version: link:../../packages/i18n
+      '@crowdin/ota-client':
+        specifier: ^2.0.1
+        version: 2.0.1
       next:
         specifier: ^15.5.2
         version: 15.5.2(react-dom@19.0.0)(react@19.0.0)

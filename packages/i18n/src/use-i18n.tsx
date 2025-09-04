@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, type PropsWithChildren } from "react";
 
 export interface I18NImplementation {

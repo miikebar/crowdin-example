@@ -1,3 +1,5 @@
+"use client";
+
 import { useI18N } from "@crowdin-example/i18n";
 
 export function AuthForm() {

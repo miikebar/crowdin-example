@@ -1,10 +1,44 @@
+import { LOCALE_CONFIG as AUTH_LOCALE_CONFIG } from "@crowdin-example/auth";
+import OtaClient from "@crowdin/ota-client";
+import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
+import { routing } from "./routing";
 
-export default getRequestConfig(async () => {
-  const locale = "en-US";
+const DEFAULT_NAMESPACE = "translation";
+
+const CROWDIN_CLIENTS = new Map<string, OtaClient>([
+  [DEFAULT_NAMESPACE, new OtaClient("ca58442a2f7d9ec0ddeddc9u26r")],
+  [
+    AUTH_LOCALE_CONFIG.namespace,
+    new OtaClient(AUTH_LOCALE_CONFIG.distributionHash),
+  ],
+]);
+
+export default getRequestConfig(async ({ requestLocale }) => {
+  const requested = await requestLocale;
+  const locale = hasLocale(routing.locales, requested)
+    ? requested
+    : routing.defaultLocale;
+
+  const client = CROWDIN_CLIENTS.get(locale);
+
+  const messages = await Promise.all(
+    [...CROWDIN_CLIENTS.entries()].map(async ([namespace, client]) => {
+      const strings = await client.getStringsByLocale(locale);
+
+      if (namespace === DEFAULT_NAMESPACE) {
+        // The translation namespace is the default namespace
+        return strings;
+      }
+
+      return {
+        [namespace]: strings,
+      };
+    })
+  );
 
   return {
     locale,
-    messages: (await import(`../../public/locales/${locale}.json`)).default,
+    messages: Object.assign({}, ...messages) ?? {},
   };
 });
