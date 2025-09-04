@@ -1,5 +1,7 @@
-import { AuthForm } from "@crowdin-example/auth";
+import { useTranslation } from "react-i18next";
 
 export default function IndexPage() {
-  return <AuthForm />;
+  const { t } = useTranslation();
+
+  return t("header");
 }
