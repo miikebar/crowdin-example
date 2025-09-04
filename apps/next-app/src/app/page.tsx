@@ -1,5 +1,5 @@
 import { AuthForm } from "@crowdin-example/auth";
 
-export default function IndexPage() {
+export default function Home() {
   return <AuthForm />;
 }
