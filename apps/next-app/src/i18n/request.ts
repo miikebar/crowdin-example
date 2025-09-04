@@ -20,8 +20,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ? requested
     : routing.defaultLocale;
 
-  const client = CROWDIN_CLIENTS.get(locale);
-
   const messages = await Promise.all(
     [...CROWDIN_CLIENTS.entries()].map(async ([namespace, client]) => {
       const strings = await client.getStringsByLocale(locale);
