@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    ".": "./src/index.tsx"
+    ".": "./src/index.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -19,6 +19,8 @@
     "typescript": "~5.9.2"
   },
   "dependencies": {
+    "@crowdin/ota-client": "^2.0.1",
+    "i18next": "^25.5.0",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   }

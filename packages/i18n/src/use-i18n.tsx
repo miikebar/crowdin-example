@@ -2,6 +2,7 @@ import { createContext, useContext, type PropsWithChildren } from "react";
 
 export interface I18NImplementation {
   t: (key: string, options?: Record<string, unknown>) => string;
+  changeLanguage: (language: string) => void;
 }
 
 const I18NContext = createContext(null as unknown as I18NImplementation);

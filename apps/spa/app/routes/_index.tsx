@@ -1,7 +1,14 @@
-import { useI18N } from "@crowdin-example/i18n";
+import { AuthForm } from "@crowdin-example/auth";
+import { LanguageSwitcher, useI18N } from "@crowdin-example/i18n";
 
 export default function IndexPage() {
   const { t } = useI18N();
 
-  return t("header");
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <h1>{t("header")}</h1>
+      <LanguageSwitcher />
+      <AuthForm />
+    </div>
+  );
 }
