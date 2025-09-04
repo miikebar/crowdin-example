@@ -9,6 +9,7 @@ export default function IndexPage() {
       <h1>{t("header")}</h1>
       <LanguageSwitcher />
       <AuthForm />
+      <div>{t("ota1")}</div>
     </div>
   );
 }

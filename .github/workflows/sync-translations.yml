@@ -1,0 +1,53 @@
+name: Crowdin Action
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  find-configs:
+    runs-on: ubuntu-latest
+    outputs:
+      dirs: ${{ steps.set-matrix.outputs.dirs }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Find crowdin.yml files
+        id: set-matrix
+        run: |
+          dirs=$(find . -name "crowdin.yml" -exec dirname {} \; | jq -R -s -c 'split("\n")[:-1]')
+          echo "dirs=$dirs" >> $GITHUB_OUTPUT
+
+  synchronize-with-crowdin:
+    needs: find-configs
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dir: ${{ fromJson(needs.find-configs.outputs.dirs) }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload sources (${{ matrix.dir }})
+        uses: crowdin/github-action@v2
+        with:
+          upload_sources: true
+          create_pull_request: false
+          config: ${{ matrix.dir }}/crowdin.yml
+        
+      - name: Pre-translate
+        uses: crowdin/github-action@v2
+        with:
+          command: 'pre-translate'
+          command_args: '--method tm --auto-approve-option all --no-duplicate-translations --translate-untranslated-only'
+
+      - name: Update OTA distribution
+        uses: crowdin/github-action@v2
+        with:
+          command: 'distribution ca58442a2f7d9ec0ddeddc9u26r'
+          command_args: 'release'
