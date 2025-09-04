@@ -1,4 +1,5 @@
 {
   "header": "Welcome to React and react-i18next",
-  "ota1": "Testing OTA workflow 1"
+  "ota1": "Testing OTA workflow 1 from SPA",
+  "ota2": "Testing OTA workflow 2 from SPA"
 }

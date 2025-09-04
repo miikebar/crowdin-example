@@ -45,7 +45,7 @@ jobs:
         uses: crowdin/github-action@v2
         with:
           command: 'pre-translate'
-          command_args: '--method tm --auto-approve-option all --no-duplicate-translations --translate-untranslated-only --config ${{ matrix.dir }}/crowdin.yml'
+          command_args: '-l pl -l de --method tm --auto-approve-option all --no-duplicate-translations --translate-untranslated-only --config ${{ matrix.dir }}/crowdin.yml'
 
       - name: Read distribution hash
         id: read_hash

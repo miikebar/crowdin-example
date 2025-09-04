@@ -1,3 +1,5 @@
 {
-  "header": "Welcome to Next.js and next-intl"
+  "header": "Welcome to Next.js and next-intl",
+  "ota1": "Testing OTA workflow 1 from Next.js",
+  "ota2": "Testing OTA workflow 2 from Next.js"
 }

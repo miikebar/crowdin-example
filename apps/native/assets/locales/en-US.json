@@ -1,3 +1,5 @@
 {
-  "header": "Welcome to React Native and react-i18next"
+  "header": "Welcome to React Native and react-i18next",
+  "ota1": "Testing OTA workflow 1 from React Native",
+  "ota2": "Testing OTA workflow 2 from React Native"
 }
