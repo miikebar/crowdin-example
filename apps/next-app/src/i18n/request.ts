@@ -7,7 +7,7 @@ import { routing } from "./routing";
 const DEFAULT_NAMESPACE = "translation";
 
 const CROWDIN_CLIENTS = new Map<string, OtaClient>([
-  [DEFAULT_NAMESPACE, new OtaClient("ca58442a2f7d9ec0ddeddc9u26r")],
+  [DEFAULT_NAMESPACE, new OtaClient("feab11c18bc97e1094664b9u26r")],
   [
     AUTH_LOCALE_CONFIG.namespace,
     new OtaClient(AUTH_LOCALE_CONFIG.distributionHash),
