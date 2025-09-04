@@ -1,10 +1,15 @@
-import "./globals.css";
-import type { PropsWithChildren } from "react";
+import { NextIntlClientProvider } from "next-intl";
 
-export default function RootLayout({ children }: PropsWithChildren) {
+type Props = {
+  children: React.ReactNode;
+};
+
+export default async function RootLayout({ children }: Props) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html>
+      <body>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      </body>
     </html>
   );
 }

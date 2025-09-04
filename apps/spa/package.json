@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@crowdin-example/auth": "workspace:*",
+    "@crowdin-example/i18n": "workspace:*",
     "@react-router/fs-routes": "^7.8.2",
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",

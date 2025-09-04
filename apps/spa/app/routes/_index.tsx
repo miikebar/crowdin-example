@@ -1,7 +1,7 @@
-import { useTranslation } from "react-i18next";
+import { useI18N } from "@crowdin-example/i18n";
 
 export default function IndexPage() {
-  const { t } = useTranslation();
+  const { t } = useI18N();
 
   return t("header");
 }

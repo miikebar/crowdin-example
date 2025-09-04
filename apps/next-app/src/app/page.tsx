@@ -1,5 +1,6 @@
-import { AuthForm } from "@crowdin-example/auth";
+import { useTranslations } from "next-intl";
 
-export default function Home() {
-  return <AuthForm />;
+export default function HomePage() {
+  const t = useTranslations();
+  return <h1>{t("header")}</h1>;
 }
