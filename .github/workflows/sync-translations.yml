@@ -38,18 +38,21 @@ jobs:
         with:
           upload_sources: true
           create_pull_request: false
-          config: ${{ matrix.dir }}/crowdin.yml
+          # config: ${{ matrix.dir }}/crowdin.yml
+          config: /apps/spa/crowdin.yml
         
       - name: Pre-translate
         uses: crowdin/github-action@v2
         with:
           command: 'pre-translate'
           command_args: '--method tm --auto-approve-option all --no-duplicate-translations --translate-untranslated-only'
-          config: ${{ matrix.dir }}/crowdin.yml
+          # config: ${{ matrix.dir }}/crowdin.yml
+          config: /apps/spa/crowdin.yml
 
       - name: Update OTA distribution
         uses: crowdin/github-action@v2
         with:
           command: 'distribution ca58442a2f7d9ec0ddeddc9u26r'
           command_args: 'release'
-          config: ${{ matrix.dir }}/crowdin.yml
+          # config: ${{ matrix.dir }}/crowdin.yml
+          config: /apps/spa/crowdin.yml
